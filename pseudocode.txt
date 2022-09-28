@@ -1,0 +1,57 @@
+IMPORT a method that randomizes word selection
+
+WHILE loop to allow for replay of game
+SET player value to false to allow game to repeat/loop
+
+LOAD list of words from text file
+SET one as secret word
+DISPLAY "Welcome to Spaceman!"
+DISPLAY "The secret word contains: _ letters"
+DISPLAY "You have 7 incorrect guesses, please enter one letter per round"
+
+PROMPT user to enter guess each round
+GET player letter input
+
+FOR loop through letters in secret word to determine if a letter has been guessed
+
+IF letter guessed appears in word  
+    DISPLAY "Your guess appears in the word!"
+    DISPLAY the placeholder text with the correct letters filled in
+    DISPLAY which letters have not been guessed
+
+
+ELSEIF guessed letter is not in word 
+    DISPLAY "Sorry your guess was not in the word, try again"
+    DISPLAY the placeholder text with the correct letters filled in
+    DISPLAY which letters have not been guessed
+    DISPLAY number of guesses remaining
+
+ELSE user enters more than one letter
+    DISPLAY "Please only enter one letter at a time"
+    PROMPT user to enter a letter
+
+ENDIF
+
+IF all letters of secret word have been correctly guessed
+    DISPLAY message notifying user they won
+
+ELSE if all letters have not been guessed
+    DISPLAY "Sorry you didn't win, try again"
+    DISPLAY correct word
+
+ENDIF
+
+PROMPT "Play again? Enter yes or no > "
+GET play again selection from player
+
+IF player wants to play again
+    SET player value to false to continue loop
+
+ELSE user does not select to play again
+    DISPLAY "Thanks for playing!"
+    BREAK
+
+ENDIF
+
+
+
