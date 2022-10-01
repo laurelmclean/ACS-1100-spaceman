@@ -109,12 +109,14 @@ def spaceman(secret_word):
     guesses = 7
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
-    player = False
-    while player == False:
-        while True:
-            guess = input("Please guess one letter: ")
-            if len(str(guess)) > 1:
-                print("Please only enter one letter at a time.")
+
+    while True:
+        guess = input("Please guess one letter: ")
+        if len(guess) > 1:
+            print("Please only enter one letter at a time.")
+        else:
+            if guess.isalpha() == False:
+                print("Please only guess letters.")
             else:
                 guess = guess.lower
                 break
