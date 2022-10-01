@@ -58,7 +58,7 @@ def get_guessed_word(secret_word, letters_guessed):
         else:
             guessed_letters += "_"
 
-
+    return guessed_letters
 
 def is_guess_in_word(guess, secret_word):
     '''
@@ -75,10 +75,8 @@ def is_guess_in_word(guess, secret_word):
     #TODO: check if the letter guess is in the secret word
 
     if guess in secret_word:
-        print("Your guess appears in the word!")
         return True
     else:
-        print("Sorry your guess was not in the word. Please try again.")
         return False
 
 
@@ -92,7 +90,9 @@ def spaceman(secret_word):
       secret_word (string): the secret word to guess.
 
     '''
-
+    game_over = False
+    guesses = 7
+    letters_guessed = []
 
     #TODO: show the player information about the game according to the project spec
 
@@ -106,43 +106,44 @@ def spaceman(secret_word):
     print(f"The secret word contains {len(secret_word)} letters.")
     print("You have 7 incorrect guesses, please enter one letter per round")
 
-    guesses = 7
+   
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
 
-    while True:
-        guess = input("Please guess one letter: ")
-        if len(guess) > 1:
-            print("Please only enter one letter at a time.")
-        else:
-            if guess.isalpha() == False:
-                print("Please only guess letters.")
+    while not game_over:
+        # show guessed word so far
+        print(f'The guessed word is {get_guessed_word(secret_word, letters_guessed)}')
+        print(f'The guessed letters are: {letters_guessed}')
+        check_guess = False
+        while check_guess == False:
+            guess = input("Please guess one letter: ").lower()
+            if len(guess) > 1:
+                print("Please only enter one letter at a time.")
+            elif guess.isalpha() == False:
+                print("Please only guess letters, no numbers or special characters allowed.")
             else:
-                guess = guess.lower
+                letters_guessed.append(guess)
                 break
-
-
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
 
-    if is_guess_in_word(guess, secret_word) == False:
-        guesses -= 1
-        print(f"You have {guesses} remaining.")
+        if is_guess_in_word(guess, secret_word) == True:
+            print("Your guess appears in the word!")
+        else:
+            guesses -= 1
+            print("Sorry your guess was not in the word. Please try again.")
+            print(f"You have {guesses} guesses remaining.")
 
-    #TODO: show the guessed word so far
 
-    get_guessed_word(secret_word, letters_guessed)
 
     #TODO: check if the game has been won or lost
 
-    is_word_guessed(secret_word, letters_guessed)
-
-    if guesses == 7:
-        print(f"Sorry, you ran out of guesses! The secret word was {secret_word}")
-        
-
-    if is_word_guessed(secret_word, letters_guessed) == True:
-        print(f"Congratulations, you win! The secret word was {secret_word}")
+        if guesses == 0:
+            print(f"Sorry, you ran out of guesses! The secret word was {secret_word}")
+            
+        elif is_word_guessed(secret_word, letters_guessed) == True:
+            print(
+                f"Congratulations, you win! The secret word was {secret_word}")
 
 
 
