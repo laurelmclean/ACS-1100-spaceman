@@ -53,13 +53,31 @@ def spaceman(secret_word):
     guesses = 7
     letters_guessed = []
 # Shows player the rules
+# Stretch challenge - spaceman ascii art
     print("Welcome to Spaceman!")
+    print("                 _..._ ")
+    print("               .'     '.     _")
+    print("              /   .-"" - |   _/ | ")
+    print("           .-|   /  .. |  |   |")
+    print("           |  \  |   > /.-'-./")
+    print("           | .-'-. ~_.'   = /")
+    print("           .'=  *=|.    _.=' ")
+    print("          /   _.  |.   ; ")
+    print("         ;-.-'|    \.  | ")
+    print("        /   | \    _\  _\ ")
+    print("        \__/'._;.  ==' ==\ ")
+    print("                 \    \   |")
+    print("                  /   /   /")
+    print("                 /-._/-._/")
+    print("                 \  `\  \ ")
+    print("                  `-._/._/")
+
 
     instruction = input("Would you like instructions? (yes/no) ")
     instruction = instruction.lower()
     if instruction == "yes":
         print("Spaceman is a guessing game. There is a mystery word that you will try to guess one letter at a time.\nA placeholder is initially shown, with the number of blanks corresponding to the number of letters in the word.\nIf the letter is in the mystery word, the position(s) of the letter(s) are revealed in the placeholders.\nGuess the word before you run out of guesses!")
-        sleep(14)
+        sleep(15)
         os.system('clear')
     print(f"The secret word contains {len(secret_word)} letters.")
     print("You have 7 incorrect guesses, please enter one letter per round")
