@@ -80,15 +80,17 @@ def spaceman(secret_word):
                 break
 
     #check if the guessed letter is in the secret or not and give the player feedback
-
-        if is_guess_in_word(guess, secret_word) == True and is_word_guessed(secret_word, letters_guessed) == False:
-            print("Your guess appears in the word!")
-            # show guessed word so far
-            print(f'The guessed word so far is {get_guessed_word(secret_word, letters_guessed)}')
-            print(f'The guessed letters are: {letters_guessed}')
+        if is_guess_in_word(guess, secret_word) == True:
+            # Will only show this feedback if game hasn't been won
+            if is_word_guessed(secret_word, letters_guessed) == False:
+                print("Your guess appears in the word!")
+                # show guessed word so far
+                print(f'The guessed word so far is {get_guessed_word(secret_word, letters_guessed)}')
+                print(f'The guessed letters are: {letters_guessed}')
         # subtract a guess and show number of guesses remaining
         else:
             guesses -= 1
+            # will only show this feedback if game hasn't been lost
             if guesses > 0:
                 print("Sorry your guess was not in the word. Please try again.")
                 print(f"You have {guesses} guesses remaining.")
