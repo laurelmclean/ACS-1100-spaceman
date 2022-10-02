@@ -1,5 +1,8 @@
 from operator import truediv
 import random
+# allows me to clear terminal screen after a set time in seconds
+import os
+from time import sleep
 
 def load_word():
 # Loads words from list and randomly assigns one to secret word
@@ -56,7 +59,8 @@ def spaceman(secret_word):
     instruction = instruction.lower()
     if instruction == "yes":
         print("Spaceman is a guessing game. There is a mystery word that you will try to guess one letter at a time.\nA placeholder is initially shown, with the number of blanks corresponding to the number of letters in the word.\nIf the letter is in the mystery word, the position(s) of the letter(s) are revealed in the placeholders.\nGuess the word before you run out of guesses!")
-    
+        sleep(14)
+        os.system('clear')
     print(f"The secret word contains {len(secret_word)} letters.")
     print("You have 7 incorrect guesses, please enter one letter per round")
 
@@ -85,6 +89,8 @@ def spaceman(secret_word):
             if is_word_guessed(secret_word, letters_guessed) == False:
                 print("Your guess appears in the word!")
                 # show guessed word so far
+                sleep(2)
+                os.system('clear')
                 print(f'The guessed word so far is {get_guessed_word(secret_word, letters_guessed)}')
                 print(f'The guessed letters are: {letters_guessed}')
         # subtract a guess and show number of guesses remaining
@@ -93,6 +99,8 @@ def spaceman(secret_word):
             # will only show this feedback if game hasn't been lost
             if guesses > 0:
                 print("Sorry your guess was not in the word. Please try again.")
+                sleep(2)
+                os.system('clear')
                 print(f"You have {guesses} guesses remaining.")
                 print(f'The guessed word so far is {get_guessed_word(secret_word, letters_guessed)}')
                 print(f'The guessed letters are: {letters_guessed}')
@@ -112,9 +120,13 @@ def spaceman(secret_word):
     play_again = input("Would you like to play again? (yes/no) ")
     play_again = play_again.lower()
     if play_again == "yes":
+        sleep(1)
+        os.system('clear')
         secret_word = load_word()
         spaceman(secret_word)
     else:
+        sleep(1)
+        os.system('clear')
         print("See you later!")
 
 #These function calls that will start the game
