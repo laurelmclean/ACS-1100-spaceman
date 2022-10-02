@@ -110,7 +110,7 @@ def spaceman(secret_word):
 
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
 
-    while not game_over:
+    while game_over == False:
         # show guessed word so far
         print(f'The guessed word is {get_guessed_word(secret_word, letters_guessed)}')
         print(f'The guessed letters are: {letters_guessed}')
@@ -140,12 +140,13 @@ def spaceman(secret_word):
 
         if guesses == 0:
             print(f"Sorry, you ran out of guesses! The secret word was {secret_word}")
+            game_over = True
             
         elif is_word_guessed(secret_word, letters_guessed) == True:
             print(
                 f"Congratulations, you win! The secret word was {secret_word}")
 
-
+    
 
 #These function calls that will start the game
 secret_word = load_word()
